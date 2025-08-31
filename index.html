@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RSS @100 YEARS</title>
+  <style>
+    :root {
+      --orange: #ff6a00;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      background: url("rss.jpg") no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+    }
+    body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255,106,0,0.25);
+      z-index: -1;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1100px;
+      margin-bottom: 20px;
+    }
+    .top-row img {
+      width: 150px;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .top-row img:hover {
+      transform: scale(1.1);
+    }
+
+    .headline {
+      text-align: center;
+      flex: 1;
+      animation: fadeZoom 1.5s ease;
+    }
+    .headline h1 {
+      font-size: clamp(40px, 6vw, 80px);
+      background: var(--white);
+      color: var(--orange);
+      padding: 15px 20px;
+      border-radius: 12px;
+      display: inline-block;
+      font-weight: bold;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .headline img {
+      width: 150px;
+      height: 180px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    @keyframes fadeZoom {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .sub {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: bold;
+      background: var(--orange);
+      color: var(--white);
+      padding: 15px 25px;
+      border-radius: 12px;
+      display: inline-block;
+      margin: 30px auto;
+      animation: bounceIn 1.2s ease;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 400px;
+      width: 100%;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.9);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    input, textarea {
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid var(--orange);
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+    input:focus, textarea:focus {
+      border-color: #ff8533;
+      box-shadow: 0 0 8px rgba(255,106,0,0.6);
+    }
+    button {
+      padding: 14px;
+      font-size: 18px;
+      font-weight: bold;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #e65c00;
+      box-shadow: 0 0 20px rgba(255,106,0,0.7);
+    }
+
+    #message {
+      font-size: 36px;
+      font-weight: bold;
+      margin-top: 20px;
+      padding: 15px 20px;
+      background: var(--white);
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    #message span {
+      background: linear-gradient(270deg, #ff6a00, #007bff, #28a745, #6f42c1, #d63384, #ff6a00);
+      background-size: 1000% 1000%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 8s ease infinite;
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #images {
+      display: none;
+      justify-content: center;
+      margin-top: 25px;
+    }
+    #images img {
+      width: 450px;
+      height: 300px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    #images img:hover {
+      transform: scale(1.08);
+    }
+
+    footer {
+      opacity: .7;
+      font-size: 14px;
+      margin-top: 40px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-row">
+    <img src="dr ji1.jpg" alt="Dr. Hedgewar" />
+    <div class="headline">
+      <img src="rss.jpg" alt="RSS Logo" />
+      <h1>RSS @100 YEARS</h1>
+    </div>
+    <img src="bharat mata.jpg" alt="Bharat Mata" />
+  </div>
+
+  <p class="sub">Join RSS</p>
+
+  <form id="registerForm">
+    <input type="text" id="name" name="name" placeholder="Enter your name" required />
+    <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required />
+    <textarea id="address" name="address" placeholder="Enter your address" required></textarea>
+    <button type="submit">Register</button>
+  </form>
+
+  <div id="message"></div>
+
+  <div id="images">
+    <img src="IMG RSS.jpeg" alt="Thank You Image" />
+  </div>
+
+  <footer>© 2025</footer>
+
+  <!-- Google Sheets connected script -->
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbygDTHbKnDD1VPoTcGOMDxmWEYXlgE5Jlb6zkEfKWiVHesiY2bbYcb-Tz36BH2oa3Sp/exec";
+    const form = document.getElementById("registerForm");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const mobile = document.getElementById("mobile").value;
+      const address = document.getElementById("address").value;
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(form)
+      })
+      .then(response => {
+        const messageEl = document.getElementById("message");
+        messageEl.innerHTML =
+          "<span>Dear " + name + ", you successfully registered with RSS. Thank you for registering!</span>";
+        
+        document.getElementById("images").style.display = "flex";
+        form.reset();
+      })
+      .catch(error => {
+        document.getElementById("message").innerHTML =
+          "<span>Oops! Something went wrong. Please try again.</span>";
+        console.error("Error!", error.message);
+      });
+    });
+  </script>
+</body>
+</html>
